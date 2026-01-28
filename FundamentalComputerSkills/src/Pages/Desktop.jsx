@@ -13,9 +13,18 @@ function Desktop() {
 
 
             <div className="navbar">
-                <AppIcon name="App Name 1" icon={desktopIcon} variant = "taskbar"/>
-                <AppIcon name="App Name 2" icon={desktopIcon} variant = "taskbar"/>
-                <AppIcon name="App Name 3" icon={desktopIcon} variant = "taskbar"/>
+                <div className="navbar-left">
+                    {/* Left-aligned widgets can go here */}
+                </div>
+                <div className="navbar-center">
+                    <AppIcon name="App Name 1" icon={desktopIcon} variant = "taskbar"/>
+                    <AppIcon name="App Name 2" icon={desktopIcon} variant = "taskbar"/>
+                    <AppIcon name="App Name 3" icon={desktopIcon} variant = "taskbar"/>
+                </div>
+                <div className="navbar-right">
+                    {/* Wifi, sound, bluetooth, battery, clock, etc */}
+                    <p>4:30 PM</p>
+                </div>
             </div>
         </div>
     </> 
