@@ -1,4 +1,5 @@
 import AppIcon from '../Components/AppIcon.jsx'
+import Clock from '../Components/Clock.jsx'
 //import myImage from '../Assets/background-image.jpg'
 import desktopIcon from '../Assets/DesktopIconPlaceholder.png'
 
@@ -23,7 +24,7 @@ function Desktop() {
                 </div>
                 <div className="navbar-right">
                     {/* Wifi, sound, bluetooth, battery, clock, etc */}
-                    <p>4:30 PM</p>
+                    <Clock />
                 </div>
             </div>
         </div>

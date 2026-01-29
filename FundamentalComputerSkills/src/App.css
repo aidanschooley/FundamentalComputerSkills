@@ -65,7 +65,8 @@
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;    
+  -webkit-line-clamp: 1; 
+  line-clamp: 1;   
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -127,4 +128,43 @@
 
 .app-icon:hover .app-icon-tooltip {
   opacity: 1;
+}
+
+/* Modal Window Styling -----------------------------------------------------*/
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+/* This is the key part: it applies styles when the element is targeted by the URL fragment */
+.modal-window:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window > div {
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 2rem;
+  background: #fff;
+  color: #444;
+  border-radius: 5px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #aaa;
 }
