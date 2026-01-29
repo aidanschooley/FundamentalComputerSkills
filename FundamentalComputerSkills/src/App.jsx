@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Desktop from './Pages/Desktop'
-import Login from './Pages/Login'
+import Desktop from './pages/Desktop.jsx'
+import Login from './pages/Login.jsx'
 
 function App() {
   return (
