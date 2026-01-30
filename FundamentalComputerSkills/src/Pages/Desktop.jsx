@@ -1,5 +1,6 @@
 import AppIcon from '../Components/AppIcon.jsx'
 import Clock from '../Components/Clock.jsx'
+import SideBar from '../Components/SideBar.jsx'
 //import myImage from '../Assets/background-image.jpg'
 import desktopIcon from '../Assets/DesktopIconPlaceholder.png'
 
@@ -27,7 +28,13 @@ function Desktop() {
                     <Clock />
                 </div>
             </div>
+
         </div>
-    </> 
+
+        <div className="sidebar-container">
+            <SideBar />
+        </div>
+
+        </> 
 }
 export default Desktop;

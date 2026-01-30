@@ -4,12 +4,36 @@
   padding: 0;
 }
 
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;
+  padding-left: 10px;
+  align-items: center;
+  height: flex;
+}
+
+.link {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  margin-top: 10px;
+  color: black;
+}
+
 .desktop-container {
   aspect-ratio: 16 / 9;
-  height: 97vh;
+  width: 85%;
+  height: flex;
   background-image: url('./assets/background-image.jpg');
   background-size: contain;
   position: relative;
+  border: 5px solid black;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 
@@ -132,8 +156,8 @@
 
 /* Modal Window Styling -----------------------------------------------------*/
 .modal-window {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed; /* change to absolute to make movable */
+  background-color: rgba(0, 0, 0, 0);
   top: 0;
   right: 0;
   bottom: 0;
@@ -167,4 +191,51 @@
   font-size: 24px;
   text-decoration: none;
   color: #aaa;
+}
+
+
+/* Side Bar --------------------------------*/
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14%;
+  height: 100%;
+  background-color: #ffffff00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  gap: 1rem;
+}
+
+.lesson-progress {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-left: 150px;
+  margin-top: 10px;
+}
+
+.lesson-instructions {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 150px;
+  min-height: 200px;
+  padding: 10px;
+  overflow: scroll;
+}
+
+.help-buttons {
+  position: absolute;
+  bottom: 30px;
+}
+
+.help-buttons button {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  margin-top: 10px;
+  background-color: white;
 }
