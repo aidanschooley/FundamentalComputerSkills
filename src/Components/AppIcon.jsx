@@ -1,7 +1,23 @@
-function AppIcon({ name, icon, variant="desktop" }) {
-    return (
+import { useState } from 'react';
+import AppWindow from './AppWindow.jsx';
 
-        <a href="#open-modal" className={`app-icon ${variant}`}>
+function AppIcon({ name, icon, variant = "desktop" }) {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleIconClick = (e) => {
+        e.preventDefault();
+        setIsOpen(true);
+    };
+
+    const closeWindow = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsOpen(false);
+    };
+
+    return (
+        <a href="#" className={`app-icon ${variant}`} onClick={handleIconClick} >
             <img className="app-icon-image" src={icon} alt={name} />
 
             {/* Desktop shows name under icon, taskbar hides it */}
@@ -12,18 +28,14 @@ function AppIcon({ name, icon, variant="desktop" }) {
             {/* Tooltip for both desktop and taskbar */}
             <div className={`app-icon-tooltip ${variant}`}>{name}</div>
 
-            <div id="open-modal" class="modal-window">
-                <div>
-                    <h2>Hello!</h2>
-                    <p>This is a window.</p>
-                    <a href="#" title="Close" class="modal-close">Close &times;</a>
-                </div>
-            </div>
-
+            {/* Window */}
+            <AppWindow 
+                name={name}
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+            />
 
         </a>
-        
-
     );
 }
 

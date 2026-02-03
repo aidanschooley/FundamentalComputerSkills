@@ -16,13 +16,13 @@ function SideBar() {
                 */}
 
                 {/* Lesson number and progress */}
-                <div class='lesson-num'>
+                <div className='lesson-num'>
                     <p>Lesson #1</p>
-                    <div class="lesson-progress"></div>
+                    <div className="lesson-progress"></div>
                 </div>
 
                 {/* Lesson instructions */}
-                <div class='lesson-instructions'>
+                <div className='lesson-instructions'>
                     <p>Step 1</p>
                     <p>Step 2</p>
                     <p>Step 3</p>
@@ -31,11 +31,11 @@ function SideBar() {
                 </div>
 
                 {/* Help buttons */}
-                <div class="help-buttons">
-                    <button class="hint-button">
+                <div className="help-buttons">
+                    <button className="hint-button">
                         Hints
                     </button>
-                    <button class="chat-button">
+                    <button className="chat-button">
                         Questions
                     </button>
                 </div>
