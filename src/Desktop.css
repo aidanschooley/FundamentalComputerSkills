@@ -1,6 +1,6 @@
 .desktop-page {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     background-color: #ffffff;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -14,14 +14,13 @@
   
   .desktop-container {
     aspect-ratio: 16 / 9;
-    height: 80vh;
+    width: 80vw;
     background-image: url('./assets/background-image.jpg');
     background-size: contain;
     position: relative;
     border: 5px solid black;
     border-radius: 5px;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin: 5px;
   }
 
   .react-grid-placeholder {
