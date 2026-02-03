@@ -15,10 +15,10 @@ const originalDispatch = eventBus.dispatchEvent.bind(eventBus);
 eventBus.dispatchEvent = function(event) {
   // Emit wildcard event that fires for any event triggered
   const wildcard = new CustomEvent("*", {
-    detail: {
-      type: event.type, // Ex. openFileExplorer
-      detail: event.detail
-    }
+        detail: {
+            type: event.type, // Ex. openFileExplorer
+            detail: event.detail
+        }
   });
 
   originalDispatch(wildcard);
