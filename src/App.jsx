@@ -10,14 +10,14 @@ import SideBar from './Components/SideBar'
 function App() {
   return (
     <BrowserRouter>
-      <nav class="topnav">
-        <div class="link">
+      <nav className="topnav">
+        <div className="link">
         <Link to="/">Desktop</Link>
         </div>
-        <div class="link">
+        <div className="link">
         <Link to="/lessons">Lessons</Link>
         </div>
-        <div class="link">
+        <div className="link">
         <Link to="/login">Login</Link>
         </div>
       </nav>
