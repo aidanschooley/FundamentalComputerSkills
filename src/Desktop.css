@@ -2,7 +2,9 @@
     width: 100vw;
     height: 90vh;
     background-color: #ffffff;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     flex-direction: row;
     justify-content: space-between;
     align-items: top;
@@ -12,8 +14,7 @@
   
   .desktop-container {
     aspect-ratio: 16 / 9;
-    width: 85vw;
-    height: flex;
+    height: 80vh;
     background-image: url('./assets/background-image.jpg');
     background-size: contain;
     position: relative;
@@ -187,6 +188,14 @@
   
   
   /* Side Bar --------------------------------*/
+  .sidebar-container {
+    position: relative;
+    width: 14vw;
+    height: 80vh;
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+  
   .sidebar {
     position: absolute;
     top: 0;
