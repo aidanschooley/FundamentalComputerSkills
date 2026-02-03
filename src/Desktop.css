@@ -22,7 +22,10 @@
     margin-top: 5px;
     margin-left: 5px;
   }
-  
+
+  .react-grid-placeholder {
+    background: transparent !important;
+  }
   
   /* Taskbar */
   .navbar {
@@ -83,8 +86,10 @@
   }
   
   .app-icon.desktop {
-    width: 7.5vw;
-    padding: 1vw;
+    width: 4.5vw;
+    padding-bottom: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
   }
   
   /* Controls app icon image for the desktop display */

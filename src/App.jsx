@@ -1,23 +1,26 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import './App.css'
-import './Desktop.css'
 import Desktop from './Pages/Desktop'
 import Lessons from './Pages/Lessons'
 import Login from './Pages/Login'
 import SideBar from './Components/SideBar'
 
+import './App.css'
+import './Desktop.css'
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+
 function App() {
   return (
     <BrowserRouter>
-      <nav class="topnav">
-        <div class="link">
+      <nav className="topnav">
+        <div className="link">
         <Link to="/">Desktop</Link>
         </div>
-        <div class="link">
+        <div className="link">
         <Link to="/lessons">Lessons</Link>
         </div>
-        <div class="link">
+        <div className="link">
         <Link to="/login">Login</Link>
         </div>
       </nav>
