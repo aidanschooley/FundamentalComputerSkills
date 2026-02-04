@@ -11,15 +11,14 @@ import desktopIcon from '../assets/DesktopIconPlaceholder.png'
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function Desktop() {
+
     const initialLayout = [
         { i: "app1", x: 0, y: 0, w: 1, h: 1, static: false },
         { i: "app2", x: 0, y: 1, w: 1, h: 1, static: false },
         { i: "app3", x: 0, y: 2, w: 1, h: 1, static: false }
     ]
 
-    const [isOpenApp1, setIsOpenApp1] = useState(false);
-    const [isOpenApp2, setIsOpenApp2] = useState(false);
-    const [isOpenApp3, setIsOpenApp3] = useState(false);
+   
 
     return <>
         <div className="desktop-page">
