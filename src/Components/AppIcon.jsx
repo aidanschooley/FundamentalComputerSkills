@@ -1,23 +1,16 @@
-import { useState } from 'react';
-import AppWindow from './AppWindow.jsx';
-
-function AppIcon({ name, icon, variant = "desktop" }) {
-
-    const [isOpen, setIsOpen] = useState(false);
+function AppIcon({ name, icon, openWindow, variant = "desktop"}) {
 
     const handleIconClick = (e) => {
-        e.preventDefault();
-        setIsOpen(true);
+        if (e && e.preventDefault) e.preventDefault();
+        openWindow(true);
     };
 
-    const closeWindow = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setIsOpen(false);
-    };
+    const clickProps = variant === "taskbar"
+        ? { onClick: handleIconClick }
+        : { onDoubleClick: handleIconClick };
 
     return (
-        <a href="#" className={`app-icon ${variant}`} onClick={handleIconClick} >
+        <div role="button" tabIndex={0} className={`app-icon ${variant}`} {...clickProps} >
             <img className="app-icon-image" src={icon} alt={name} />
 
             {/* Desktop shows name under icon, taskbar hides it */}
@@ -28,14 +21,7 @@ function AppIcon({ name, icon, variant = "desktop" }) {
             {/* Tooltip for both desktop and taskbar */}
             <div className={`app-icon-tooltip ${variant}`}>{name}</div>
 
-            {/* Window */}
-            <AppWindow 
-                name={name}
-                isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
-            />
-
-        </a>
+        </div>
     );
 }
 
