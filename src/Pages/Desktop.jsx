@@ -1,17 +1,26 @@
+import { Responsive, WidthProvider } from "react-grid-layout";
+import { useState } from 'react';
+
 import AppIcon from '../Components/AppIcon.jsx'
 import Clock from '../Components/Clock.jsx'
 import SideBar from '../Components/SideBar.jsx'
+import AppWindow from '../Components/AppWindow.jsx';
+
 import desktopIcon from '../assets/DesktopIconPlaceholder.png'
-import { Responsive, WidthProvider } from "react-grid-layout";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function Desktop() {
+
     const initialLayout = [
         { i: "app1", x: 0, y: 0, w: 1, h: 1, static: false },
         { i: "app2", x: 0, y: 1, w: 1, h: 1, static: false },
-        { i: "app3", x: 0, y: 2, w: 1, h: 1, static: false } 
+        { i: "app3", x: 0, y: 2, w: 1, h: 1, static: false }
     ]
+
+   const [isOpenApp1, setIsOpenApp1] = useState(false);
+   const [isOpenApp2, setIsOpenApp2] = useState(false);
+   const [isOpenApp3, setIsOpenApp3] = useState(false);
 
     return <>
         <div className="desktop-page">
@@ -25,19 +34,19 @@ function Desktop() {
                     preventCollision={true}
                     rowHeight={80}          // Controls vertical snap
                     width={1200}
-                    isResizable={false}     // Desktop icons don’t resize
+                    isResizable={false}     // Desktop icons don’t resize   
                     draggableHandle=".app-icon" // Only drag by the icon
                 >
                     <div key="app1">
-                        <AppIcon name="App Name 1" icon={desktopIcon} />
+                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsOpenApp1(true)} />
                     </div>
 
                     <div key="app2">
-                        <AppIcon name="App Name 2 App Name 2" icon={desktopIcon} />
+                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsOpenApp2(true)} />
                     </div>
 
                     <div key="app3">
-                        <AppIcon name="LongLongLongApp Name 3" icon={desktopIcon} />
+                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsOpenApp3(true)} />
                     </div>
                 </ResponsiveGridLayout>
 
@@ -48,9 +57,9 @@ function Desktop() {
                     </div>
 
                     <div className="navbar-center">
-                        <AppIcon name="App Name 1" icon={desktopIcon} variant="taskbar" />
-                        <AppIcon name="App Name 2" icon={desktopIcon} variant="taskbar" />
-                        <AppIcon name="App Name 3" icon={desktopIcon} variant="taskbar" />
+                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsOpenApp1(true)} variant="taskbar" />
+                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsOpenApp2(true)} variant="taskbar" />
+                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsOpenApp3(true)} variant="taskbar" />
                     </div>
 
                     <div className="navbar-right">
@@ -59,12 +68,31 @@ function Desktop() {
                     </div>
                 </div>
 
+                {/* App Windows */}
+                <AppWindow
+                    name={"App Name 1"}
+                    isOpen={isOpenApp1}
+                    onClose={() => setIsOpenApp1(false)}
+                />
+
+                <AppWindow
+                    name={"App Name 2"}
+                    isOpen={isOpenApp2}
+                    onClose={() => setIsOpenApp2(false)}
+                />
+
+                <AppWindow
+                    name={"App Name 3"}
+                    isOpen={isOpenApp3}
+                    onClose={() => setIsOpenApp3(false)}
+                />
+
             </div>
 
             <div className="sidebar-container">
                 <SideBar />
             </div>
         </div>
-        </> 
+    </>
 }
 export default Desktop;
