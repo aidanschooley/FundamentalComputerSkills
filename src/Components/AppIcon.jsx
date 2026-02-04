@@ -1,7 +1,16 @@
-function AppIcon({ name, icon, variant="desktop" }) {
-    return (
+function AppIcon({ name, icon, openWindow, variant = "desktop"}) {
 
-        <div href="#open-modal" className={`app-icon ${variant}`}>
+    const handleIconClick = (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        openWindow(true);
+    };
+
+    const clickProps = variant === "taskbar"
+        ? { onClick: handleIconClick }
+        : { onDoubleClick: handleIconClick };
+
+    return (
+        <div role="button" tabIndex={0} className={`app-icon ${variant}`} {...clickProps} >
             <img className="app-icon-image" src={icon} alt={name} />
 
             {/* Desktop shows name under icon, taskbar hides it */}
@@ -12,18 +21,7 @@ function AppIcon({ name, icon, variant="desktop" }) {
             {/* Tooltip for both desktop and taskbar */}
             <div className={`app-icon-tooltip ${variant}`}>{name}</div>
 
-            <div id="open-modal" className="modal-window">
-                <div>
-                    <h2>Hello!</h2>
-                    <p>This is a window.</p>
-                    <a href="#" title="Close" className="modal-close">Close &times;</a>
-                </div>
-            </div>
-
-
         </div>
-        
-
     );
 }
 
