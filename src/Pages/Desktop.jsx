@@ -5,6 +5,8 @@ import AppIcon from '../Components/AppIcon.jsx'
 import Clock from '../Components/Clock.jsx'
 import SideBar from '../Components/SideBar.jsx'
 import AppWindow from '../Components/AppWindow.jsx';
+import StartButton from "../Components/StartButton.jsx";
+import StartMenu from "../Components/StartMenu.jsx";
 
 import desktopIcon from '../assets/DesktopIconPlaceholder.png'
 
@@ -17,9 +19,11 @@ function Desktop() {
         { i: "app3", x: 0, y: 2, w: 1, h: 1, static: false }
     ]
 
-    const [isOpenApp1, setIsOpenApp1] = useState(false);
-    const [isOpenApp2, setIsOpenApp2] = useState(false);
-    const [isOpenApp3, setIsOpenApp3] = useState(false);
+    const [isStartOpen, setIsStartOpen] = useState(false);
+
+    const [isApp1Open, setIsApp1Open] = useState(false);
+    const [isApp2Open, setIsApp2Open] = useState(false);
+    const [isApp3Open, setIsApp3Open] = useState(false);
 
     return <>
         <div className="desktop-page">
@@ -37,15 +41,15 @@ function Desktop() {
                     draggableHandle=".app-icon" // Only drag by the icon
                 >
                     <div key="app1">
-                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsOpenApp1(true)} />
+                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsApp1Open(true)} />
                     </div>
 
                     <div key="app2">
-                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsOpenApp2(true)} />
+                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsApp2Open(true)} />
                     </div>
 
                     <div key="app3">
-                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsOpenApp3(true)} />
+                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsApp3Open(true)} />
                     </div>
                 </ResponsiveGridLayout>
 
@@ -56,9 +60,10 @@ function Desktop() {
                     </div>
 
                     <div className="navbar-center">
-                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsOpenApp1(true)} variant="taskbar" />
-                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsOpenApp2(true)} variant="taskbar" />
-                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsOpenApp3(true)} variant="taskbar" />
+                        <StartButton toggleStartMenu={() => setIsStartOpen(prev => !prev)} />
+                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsApp1Open(true)} variant="taskbar" />
+                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsApp2Open(true)} variant="taskbar" />
+                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsApp3Open(true)} variant="taskbar" />
                     </div>
 
                     <div className="navbar-right">
@@ -67,23 +72,28 @@ function Desktop() {
                     </div>
                 </div>
 
+                <StartMenu
+                    closeStartMenu={() => setIsStartOpen(false)} 
+                    isOpen={isStartOpen}
+                />
+
                 {/* App Windows */}
                 <AppWindow
                     name={"App Name 1"}
-                    isOpen={isOpenApp1}
-                    onClose={() => setIsOpenApp1(false)}
+                    isOpen={isApp1Open}
+                    onClose={() => setIsApp1Open(false)}
                 />
 
                 <AppWindow
                     name={"App Name 2"}
-                    isOpen={isOpenApp2}
-                    onClose={() => setIsOpenApp2(false)}
+                    isOpen={isApp2Open}
+                    onClose={() => setIsApp2Open(false)}
                 />
 
                 <AppWindow
                     name={"App Name 3"}
-                    isOpen={isOpenApp3}
-                    onClose={() => setIsOpenApp3(false)}
+                    isOpen={isApp3Open}
+                    onClose={() => setIsApp3Open(false)}
                 />
 
             </div>
