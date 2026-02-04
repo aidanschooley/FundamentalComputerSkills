@@ -25,7 +25,7 @@ function Desktop() {
                     preventCollision={true}
                     rowHeight={80}          // Controls vertical snap
                     width={1200}
-                    isResizable={false}     // Desktop icons don’t resize
+                    isResizable={false}     // Desktop icons don’t resize   
                     draggableHandle=".app-icon" // Only drag by the icon
                 >
                     <div key="app1">
