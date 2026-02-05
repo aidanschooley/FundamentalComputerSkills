@@ -26,6 +26,26 @@ function Desktop() {
     const [isApp2Open, setIsApp2Open] = useState(false);
     const [isApp3Open, setIsApp3Open] = useState(false);
 
+    // Handle which App is in front
+    const [windows, setWindows] = useState({
+        app1: { isOpen: false, zIndex: 0 },
+        app2: { isOpen: false, zIndex: 0 },
+        app3: { isOpen: false, zIndex: 0 },
+    });
+    const [highestAppZIndex, setHighestAppZIndex] = useState(500);
+    
+    const bringToFront = (appName) => {
+        const newAppZIndex = highestAppZIndex + 1;
+        setWindows(prev => ({
+            ...prev,
+            [appName]: { 
+                ...prev[appName], 
+                zIndex: newAppZIndex 
+            }
+        }));
+        setHighestAppZIndex(newAppZIndex);
+    };
+
     return <>
         <div className="desktop-page">
             <div className="desktop-container">
@@ -40,6 +60,9 @@ function Desktop() {
                     width={1200}
                     isResizable={false}     // Desktop icons don’t resize   
                     draggableHandle=".app-icon" // Only drag by the icon
+
+                    dragStartDelay={0} // To prevent conflict with double-click to open app
+                    clickDelay={200}
                 >
                     <div key="app1">
                         <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsApp1Open(true)} />
@@ -62,9 +85,14 @@ function Desktop() {
 
                     <div className="navbar-center">
                         <StartButton toggleStartMenu={() => setIsStartOpen(prev => !prev)} />
-                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsApp1Open(true)} variant="taskbar" />
-                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsApp2Open(true)} variant="taskbar" />
-                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsApp3Open(true)} variant="taskbar" />
+                        <AppIcon 
+                            name="App Name 1" 
+                            icon={desktopIcon} 
+                            openWindow={() => setIsApp1Open(true)} 
+                            variant="taskbar" 
+                            isAppOpen={isApp1Open} />
+                        <AppIcon name="App Name 2" icon={desktopIcon} openWindow={() => setIsApp2Open(true)} variant="taskbar" isAppOpen={isApp2Open} />
+                        <AppIcon name="App Name 3" icon={desktopIcon} openWindow={() => setIsApp3Open(true)} variant="taskbar" isAppOpen={isApp3Open} />
                     </div>
 
                     <div className="navbar-right">
@@ -83,18 +111,24 @@ function Desktop() {
                     name={"App Name 1"}
                     isOpen={isApp1Open}
                     onClose={() => setIsApp1Open(false)}
+                    zIndex={windows.app1.zIndex}
+                    bringToFront={() => bringToFront("app1")}
                 />
 
                 <AppWindow
                     name={"App Name 2"}
                     isOpen={isApp2Open}
                     onClose={() => setIsApp2Open(false)}
+                    zIndex={windows.app2.zIndex}
+                    bringToFront={() => bringToFront("app2")}
                 />
 
                 <AppWindow
                     name={"App Name 3"}
                     isOpen={isApp3Open}
                     onClose={() => setIsApp3Open(false)}
+                    zIndex={windows.app3.zIndex}
+                    bringToFront={() => bringToFront("app3")}
                 />
 
             </div>
