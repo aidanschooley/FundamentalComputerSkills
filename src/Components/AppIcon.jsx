@@ -1,23 +1,31 @@
-import { useState } from 'react';
-import AppWindow from './AppWindow.jsx';
+function AppIcon({ name, icon, openWindow, variant = "desktop", isAppOpen = false}) {
 
-function AppIcon({ name, icon, variant = "desktop" }) {
-
-    const [isOpen, setIsOpen] = useState(false);
-
+    // functions for single click (on taskbar) and double click (on desktop)
     const handleIconClick = (e) => {
         e.preventDefault();
-        setIsOpen(true);
+        e.stopPropagation();
+        
+        if (variant === "taskbar") {
+            openWindow();
+        }
     };
-
-    const closeWindow = (e) => {
+    const handleDoubleClick = (e) => {
+        console.log("double click");
         e.preventDefault();
         e.stopPropagation();
-        setIsOpen(false);
+        if (variant === "desktop") {
+            openWindow();
+        }
     };
 
     return (
-        <a href="#" className={`app-icon ${variant}`} onClick={handleIconClick} >
+        <div 
+            role="button" 
+            tabIndex={0} 
+            className={`app-icon ${variant}`} 
+            onClick={variant === "taskbar" ? handleIconClick : undefined}
+            onDoubleClick={variant === "desktop" ? handleDoubleClick : undefined}
+        >
             <img className="app-icon-image" src={icon} alt={name} />
 
             {/* Desktop shows name under icon, taskbar hides it */}
@@ -28,14 +36,12 @@ function AppIcon({ name, icon, variant = "desktop" }) {
             {/* Tooltip for both desktop and taskbar */}
             <div className={`app-icon-tooltip ${variant}`}>{name}</div>
 
-            {/* Window */}
-            <AppWindow 
-                name={name}
-                isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
-            />
+            {/* Active indicator for taskbar (only shown when app is open) */}
+            {variant === "taskbar" && isAppOpen && (
+                <div className="app-icon-indicator"></div>
+            )}
 
-        </a>
+        </div>
     );
 }
 

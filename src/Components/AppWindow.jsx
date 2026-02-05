@@ -1,39 +1,50 @@
-import { useRef } from 'react';
-import Draggable from 'react-draggable';
-import { ResizableBox } from 'react-resizable';
-import 'react-resizable/css/styles.css';
+import { Rnd } from 'react-rnd';
 
-function AppWindow({ name, isOpen, onClose }) {
+
+function AppWindow({ name, isOpen, onClose, zIndex, bringToFront }) {
 
     const handleClose = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        onClose(); 
+        onClose();
     };
 
-    // resolve FindDOMNode error:
-    const nodeRef = useRef(null);
+    const handleFocus = (e) => {
+        // When window is clicked, bring it to front (function is managed by Desktop.jsx)
+        e.stopPropagation();
+        if (bringToFront) {
+            bringToFront();
+        }
+    };
 
     return (
-        <Draggable nodeRef={nodeRef} handle=".window-header">
-            <div ref={nodeRef} className={`appWindow ${isOpen ? 'open' : ''}`}>
-                <div className="window-content">
+        <Rnd 
+            default={{
+                x: 400,
+                y: 100,
+                width: 500,
+                height: 400,
+            }}
+            minWidth={300}
+            minHeight={100}
+            onMouseDown={handleFocus}
+            className={`appWindow ${isOpen ? 'open' : ''}`}
+            style={{ zIndex: zIndex }}
+        >
+            <div className="window-content">
+                <div className="window-header">
+                    <h2>{name}</h2>
 
-                    <div className="window-header">
-                        <p>{name}</p>
+                    <a href="#" className="appWindowClose" onClick={handleClose}>
+                        — &#9744; &times;
+                    </a>
+                </div>
 
-                        <a href="#" className="appWindowClose" onClick={handleClose}>
-                            — &#9744; &times;
-                        </a>
-                    </div>
-
-                    <div className="window-body">
-                        <p>This is the window content for {name}.</p>
-                    </div>
-
+                <div className="window-body">
+                    <p>This is the window content for {name}.</p>
                 </div>
             </div>
-        </Draggable>
+        </Rnd>
     );
 }
 

@@ -1,4 +1,7 @@
+import Checklist from './Checklist';
 function SideBar() {
+    
+
     return (
         <>
             <div id='sidebar' className='sidebar'>
@@ -21,14 +24,7 @@ function SideBar() {
                     <div className="lesson-progress"></div>
                 </div>
 
-                {/* Lesson instructions */}
-                <div className='lesson-instructions'>
-                    <p>Step 1</p>
-                    <p>Step 2</p>
-                    <p>Step 3</p>
-                    <p>Step 4</p>
-                    <p>Step 5</p>
-                </div>
+                <Checklist />
 
                 {/* Help buttons */}
                 <div className="help-buttons">
