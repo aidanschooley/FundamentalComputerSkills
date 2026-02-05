@@ -75,8 +75,10 @@
   align-items: center;
 }
 
+/* Clock */
 .navbar-right {
   font-family: Arial, Helvetica, sans-serif;
+  text-align: right ;
   color: white;
   margin-right: 1vh;
 }
