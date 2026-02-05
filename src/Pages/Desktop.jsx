@@ -29,7 +29,7 @@ function Desktop() {
                     draggableHandle=".app-icon" // Only drag by the icon
                 >
                     <div key="app1">
-                        <AppIcon name="App Name 1" icon={desktopIcon} />
+                        <AppIcon name="File Explorer" icon={desktopIcon} />
                     </div>
 
                     <div key="app2">
@@ -48,7 +48,7 @@ function Desktop() {
                     </div>
 
                     <div className="navbar-center">
-                        <AppIcon name="App Name 1" icon={desktopIcon} variant="taskbar" />
+                        <AppIcon name="File Explorer" icon={desktopIcon} variant="taskbar" />
                         <AppIcon name="App Name 2" icon={desktopIcon} variant="taskbar" />
                         <AppIcon name="App Name 3" icon={desktopIcon} variant="taskbar" />
                     </div>

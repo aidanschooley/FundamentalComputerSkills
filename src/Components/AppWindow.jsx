@@ -19,20 +19,20 @@ function AppWindow({ name, isOpen, onClose }) {
             <div ref={nodeRef} className={`appWindow ${isOpen ? 'open' : ''}`}>
                 <div className="window-content">
 
-                <div className="window-header">
-                    <h2>{name}</h2>
+                    <div className="window-header">
+                        <p>{name}</p>
 
-                    <a href="#" className="appWindowClose" onClick={handleClose} >
-                        Close &times;
-                    </a>
+                        <a href="#" className="appWindowClose" onClick={handleClose}>
+                            — &#9744; &times;
+                        </a>
+                    </div>
+
+                    <div className="window-body">
+                        <p>This is the window content for {name}.</p>
+                    </div>
+
                 </div>
-
-                <div className="window-body">
-                    <p>This is the window content for {name}.</p>
-                </div>
-
             </div>
-        </div>
         </Draggable>
     );
 }
