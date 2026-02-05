@@ -65,7 +65,7 @@ function Desktop() {
                     clickDelay={200}
                 >
                     <div key="app1">
-                        <AppIcon name="App Name 1" icon={desktopIcon} openWindow={() => setIsApp1Open(true)} />
+                        <AppIcon name="File Explorer" icon={desktopIcon} openWindow={() => setIsApp1Open(true)} />
                     </div>
 
                     <div key="app2">
@@ -86,7 +86,7 @@ function Desktop() {
                     <div className="navbar-center">
                         <StartButton toggleStartMenu={() => setIsStartOpen(prev => !prev)} />
                         <AppIcon 
-                            name="App Name 1" 
+                            name="File Explorer" 
                             icon={desktopIcon} 
                             openWindow={() => setIsApp1Open(true)} 
                             variant="taskbar" 
@@ -108,7 +108,7 @@ function Desktop() {
 
                 {/* App Windows */}
                 <AppWindow
-                    name={"App Name 1"}
+                    name={"File Explorer"}
                     isOpen={isApp1Open}
                     onClose={() => setIsApp1Open(false)}
                     zIndex={windows.app1.zIndex}
