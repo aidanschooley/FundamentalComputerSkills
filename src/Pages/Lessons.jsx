@@ -6,7 +6,7 @@ function Lessons() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('/api/lessons')
+        fetch('https://localhost:3000/lessons')
             .then(res => res.json())
             .then(data => {
                 setResponse(data);

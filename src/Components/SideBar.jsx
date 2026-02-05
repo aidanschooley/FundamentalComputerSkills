@@ -5,7 +5,7 @@ function SideBar() {
     const [error, setError] = useState(null);
 
      useEffect(() => {
-        fetch('/api/step')
+        fetch('https://localhost:3000/api/step')
             .then(res => res.json())
             .then(data => {
                 setResponse(data);
