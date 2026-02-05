@@ -27,7 +27,34 @@
   background: transparent !important;
 }
 
-/* Taskbar */
+/* Prevent grid from stealing pointer events */
+.react-grid-item {
+    pointer-events: none !important;
+}
+
+/* But allow pointer events on the app icon itself */
+.react-grid-item > * {
+    pointer-events: auto !important;
+}
+
+/* Make sure app icons are fully clickable */
+.app-icon {
+    pointer-events: auto !important;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+/* Visual feedback for clicks */
+.app-icon:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+
+
+/* Taskbar --------------------------------------------------- */
+
 .navbar {
   /* Style/Position */
   background-color: #383838eb;
@@ -118,6 +145,23 @@
   /* Hide name in taskbar */
 }
 
+
+/* Indicator bar for open apps in taskbar */
+.app-icon.taskbar.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.app-icon-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background-color: #6d6d6d;
+    border-radius: 2px 2px 0 0;
+    animation: fadeIn 0.2s ease;
+}
+
 .app-icon-tooltip {
   position: absolute;
   background: rgba(40, 40, 40, 0.95);
@@ -182,29 +226,26 @@
   pointer-events: auto;
 }
 
-/* Modal Window Styling -----------------------------------------------------*/
+/* App Window Styling -----------------------------------------------------*/
 
 .appWindow {
-  position: fixed;
-  top: 20vh;
-  left: 50vh;
-
-  width: 500px;
-  height: 400px;
-
-  z-index: 999;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
   overflow: hidden;
-
   background-color: #7d7d7d;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
 }
 
 .appWindow:target,
 .appWindow.open {
   opacity: 1;
   pointer-events: auto;
+}
+
+.appWindow.active {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
 .window-content {
