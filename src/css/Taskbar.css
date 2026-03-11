@@ -1,0 +1,51 @@
+.navbar {
+  /* Style/Position */
+  background: rgba(22, 22, 22, 0.85);
+  backdrop-filter: blur(20px);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(min(80vw, calc(100vh * 16 / 9)) * 0.05);
+
+  display: flex;
+  align-items: center;
+
+  /* To fix bootstraps trying to add padding: */
+  padding: 0;
+  margin: 0;
+  min-height: unset;
+}
+
+.navbar-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.navbar-center {
+  flex: 0 1 auto; /* Can grow but not shrink below content width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* This will be centered between the two flex:1 sections */
+}
+
+.navbar-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  margin-right: 1vh;
+  gap: 0.5rem;
+
+  /* Clock */
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: right ;
+  color: white;
+  margin-right: 1vh;
+}

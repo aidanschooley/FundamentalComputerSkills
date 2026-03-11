@@ -1,0 +1,142 @@
+.start-button {
+	margin-left: 1vh;
+	cursor: pointer;
+	padding: 0.5rem;
+	background-color: transparent;
+	border: none;
+}
+
+.start-button-icon {
+	width: auto;
+	height: calc(min(80vw, calc(100vh * 16 / 9)) * 0.025); /* Based on 2.5% of desktop size */
+}
+
+.start-menu-overlay {
+	position: absolute;
+	inset: 0;
+	background: transparent;
+	z-index: 998;
+}
+
+.start-menu {
+    position: absolute;
+    left: 50%;
+    bottom: 100px; 
+    transform: translateX(-50%);
+
+    width: 40rem;
+    height: 30rem;
+
+    background: rgba(40, 40, 40, 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.start-menu.open {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.start-menu.open .app-icon {
+	pointer-events: auto !important;
+} 
+
+.start-app-grid {
+	width: 100%;
+	height: 100%;
+	padding: 1rem 2rem;
+	margin: 0;
+	box-sizing: border-box;
+} 
+
+/* Each row is a 6‑column grid */
+.start-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Each cell centers its tile */
+.start-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-menu-tile {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-menu-placeholder {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+
+
+.start-empty {
+	padding: 16px;
+	background: rgba(40, 40, 40, 0.85);
+	backdrop-filter: blur(20px);
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.start-menu-bottom {
+	background: rgba(22, 22, 22, 0.85);
+	backdrop-filter: blur(20px);
+	height: 3rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem;
+
+    flex-shrink: 0;
+}
+
+.user-profile-button {
+	background: rgba(255, 255, 255, 0.1);
+	padding: .25rem;
+	border-radius: .25rem;
+	color: white;
+	cursor: pointer;
+}
+
+.user-profile-button:active {
+	background-color: gray;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.power-button {
+	background: rgba(255, 255, 255, 0.1);
+	padding: .25rem;
+	border-radius: .25rem;
+	color: white;
+	cursor: pointer;
+}
+
+.power-button:active {
+  	background-color: gray;
+	background: rgba(255, 255, 255, 0.2);
+}

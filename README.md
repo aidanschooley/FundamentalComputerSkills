@@ -42,6 +42,8 @@ List of potential lessons:
 
 \-	Navigating and organizing files (New folder, moving files, file paths explanation)
 
+\-	Recycle Bin (deleting items and retreiving items from the recycle bin
+
 \-	First try resetting your computer when things go wrong
 
 \-	Explaining restart/update
@@ -57,6 +59,8 @@ List of potential lessons:
 \-	Navigating settings
 
 \-	Accessibility settings
+
+\-  Managing storage
 
 \-	Installing apps
 
