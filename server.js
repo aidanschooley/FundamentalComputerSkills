@@ -13,6 +13,6 @@ app.get('/', (req, res) => {
 //Api Routes
 app.use('/api', routes)
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });
